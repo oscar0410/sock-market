@@ -8,18 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockItemComponent implements OnInit {
 
-  public stock: Stock|undefined;
+  public stocks: Array<Stock>|undefined;
 
   constructor() { }
 
   ngOnInit(): void {
-    this.stock = new Stock('Test Stock Company','TSC',85,80);
+    this.stocks = [
+      new Stock('Test Stock Company','TSC',85,80),
+      new Stock('Second Stock Company','SSC',10,20),
+      new Stock('Last Stock Company','LSC',876,765)
+  ];
   }
 
-  toggleFavorite(event: any){
+  toggleFavorite(event: any, index: any){
     console.log('We are toggling the favorite state for this stock',event);
-    if(this.stock){
-      this.stock.favorite = !this.stock.favorite
+    if(this.stocks){
+      this.stocks[index].favorite = !this.stocks[index].favorite
     }
   }
 
